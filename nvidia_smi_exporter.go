@@ -53,13 +53,13 @@ func metrics(response http.ResponseWriter, request *http.Request) {
 }
 
 func main() {
-    port := ":9101"
+    addr := ":9101"
     if len(os.Args) > 1 {
-        port = ":" + os.Args[1]
+        addr = ":" + os.Args[1]
     }
 
     http.HandleFunc("/metrics/", metrics)
-    err := http.ListenAndServe(port, nil)
+    err := http.ListenAndServe(addr, nil)
     if err != nil {
         log.Fatal("ListenAndServe: ", err)
     }
