@@ -50,7 +50,7 @@ func metrics(response http.ResponseWriter, request *http.Request) {
         name := fmt.Sprintf("%s[%s]", row[0], row[1])
         for idx, value := range row[2:] {
             result = fmt.Sprintf(
-                "%s%s{gpu=\"%s\"} %s\n", result,
+                "%s%s%s{gpu=\"%s\"} %s\n", result, "nvidia.",
                 metricList[idx], name, value)
         }
     }
