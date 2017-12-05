@@ -60,7 +60,7 @@ func metrics(response http.ResponseWriter, request *http.Request) {
 
 func init() {
 	flag.StringVar(&listenAddress, "web.listen-address", ":9114", "Address to listen on")
-	flag.StringVar(&metricsPath, "web.telemetry-path", "/metrics", "Path under which to expose metrics.")
+	flag.StringVar(&metricsPath, "web.telemetry-path", "/metrics/", "Path under which to expose metrics.")
 	flag.Parse()
 }
 
