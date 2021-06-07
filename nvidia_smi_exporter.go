@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"strings"
 )
 
 // name, index, temperature.gpu, utilization.gpu,
@@ -43,10 +44,10 @@ func metrics(response http.ResponseWriter, request *http.Request) {
 		name := fmt.Sprintf("%s[%s]", row[0], row[1])
 		log.Println("name:", name)
 		for idx, value := range row[2:] {
-			log.Println("value:", value)
+			log.Println(".. value:", metricList[idx], value)
 			result = fmt.Sprintf(
 				"%s%s{gpu=\"%s\"} %s\n", result,
-				metricList[idx], name, value)
+				strings.Replace(metricList[idx], ".", "_", -1), name, value)
 		}
 	}
 
