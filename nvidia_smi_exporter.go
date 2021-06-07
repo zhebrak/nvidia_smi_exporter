@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/csv"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -49,7 +50,7 @@ func metrics(response http.ResponseWriter, request *http.Request) {
 		}
 	}
 
-	// fmt.Fprintf(response, strings.Replace(result, "", "", -1))
+	io.WriteString(response, result)
 }
 
 func main() {
